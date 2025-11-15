@@ -32,6 +32,10 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.get("/health", (req, res) => {
+  res.status(200).send("Server is alive!");
+});
+
 app.use("/", healthRouter);
 app.use("/admin", adminRouter);
 

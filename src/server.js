@@ -15,8 +15,11 @@ app.locals.lobbyManager = lobbyManager;
 app.locals.config = config;
 app.locals.io = io;
 
-server.listen(config.port, () => {
-  logger.info("Server listening", { port: config.port });
+// Render provides the port, or we default to config.port for local testing
+const PORT = process.env.PORT || config.port;
+
+server.listen(PORT, () => {
+  logger.info("Server listening", { port: PORT });
 });
 
 const shutdown = (signal) => {
